@@ -14,12 +14,32 @@ function getHumanChoice() {
         case "Rock":
         case "Paper":
         case "Scissors":
-            console.log(`User input: ${userInputCap}`);
+            return userInputCap;
             break;
         default:
-            console.log("Error: Please enter 'Rock', 'Paper' or 'Scissors'.")
+            return null;
     }
 }
 
-console.log(getComputerChoice());
-getHumanChoice();
+function playRound(humanChoice, computerChoice) {
+    const rules = {
+        Rock: "Scissors", // Rock beats Scissors
+        Paper: "Rock", // Paper beats Rock
+        Scissors: "Paper" // Scissors beats Paper
+    };
+
+    if (humanChoice === computerChoice) {
+        console.log(`It's a tie! You: "${humanChoice}" - Computer: "${computerChoice}"`);
+    }
+    else if (rules[humanChoice] === computerChoice) {
+        console.log(`YOU won! You: "${humanChoice}" - Computer: "${computerChoice}"`);
+    }
+    else {
+        console.log(`COMPUTER won! You: "${humanChoice}" - Computer: "${computerChoice}"`);
+    }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
