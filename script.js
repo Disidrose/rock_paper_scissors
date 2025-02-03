@@ -1,6 +1,6 @@
 // Score
-let humanScore = 0;
-let computerScore = 0;
+let scorePointsHuman = 0;
+let scorePointsComputer = 0;
 
 function getComputerChoice() {
     const options_rpc = ["Rock", "Paper", "Scissors"];
@@ -33,13 +33,23 @@ function playRound(humanChoice, computerChoice) {
     }
     else if (rules[humanChoice] === computerChoice) {
         console.log(`YOU won! You: "${humanChoice}" - Computer: "${computerChoice}"`);
+        scorePointsHuman++;
     }
     else {
         console.log(`COMPUTER won! You: "${humanChoice}" - Computer: "${computerChoice}"`);
+        scorePointsComputer++;
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+        playRound(humanSelection, computerSelection);    
+    }
+    console.log(`Your score: ${scorePointsHuman}`);
+    console.log(`Computer score: ${scorePointsComputer}`);
+}
+
+playGame();
